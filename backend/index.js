@@ -54,6 +54,10 @@ const PORT = process.env.PORT || 8080;
 const MONGO_URI =
   process.env.MONGO_URI || "mongodb://127.0.0.1:27017/queue-system";
 
+app.get("/health", (req, res) => {
+  res.json({ ok: true, database: mongoose.connection.readyState === 1 });
+});
+
 async function main() {
   await mongoose.connect(MONGO_URI);
   console.log("MongoDB connected successfully");
