@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/auth/admin/login",
+        "https://queuenest.onrender.com/api/auth/admin/login",
         {
           email,
           password

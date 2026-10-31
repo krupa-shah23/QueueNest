@@ -6,7 +6,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import CurvedLoop from "../components/CurvedLoop";
 import ElectricBorder from "../components/ElectricBorder";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://queuenest.onrender.com/api";
 const categories = ["All", "Bank", "Hospital", "Government", "Education", "Utilities"];
 
 const getCategory = (name = "") => {

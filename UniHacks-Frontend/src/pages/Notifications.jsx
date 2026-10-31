@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import CurvedLoop from "../components/CurvedLoop";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "https://queuenest.onrender.com/api";
 
 const typeStyles = {
   info: {

@@ -13,7 +13,7 @@ const SignUpAdmin = () => {
   const handleSignup = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/auth/admin/register",
+        "https://queuenest.onrender.com/api/auth/admin/register",
         {
           name,
           email,

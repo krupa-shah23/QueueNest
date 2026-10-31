@@ -17,7 +17,7 @@ import {
   X
 } from "lucide-react";
 
-const API_BASE = "http://localhost:8080/api/admin";
+const API_BASE = "https://queuenest.onrender.com/api/admin";
 
 const INITIAL_FORM = {
   organizationName: "",

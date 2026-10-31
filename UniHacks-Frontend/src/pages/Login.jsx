@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/api/auth/user/login", {
+      const res = await axios.post("https://queuenest.onrender.com/api/auth/user/login", {
         email,
         password
       });
