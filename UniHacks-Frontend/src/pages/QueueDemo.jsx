@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRightLeft, Building2, CircleAlert, Clock3, Ticket, Users } from "lucide-react";
 import confetti from "canvas-confetti";
 
-const API_BASE = "https://queuenest.onrender.com/api";
+const API_BASE = "https://queuenest-1.onrender.com/api";
 
 const QueueDemo = () => {
   const location = useLocation();
