@@ -25,6 +25,8 @@ const Search = () => {
   const [activeTag, setActiveTag] = useState("All");
   const [sortBy, setSortBy] = useState("default");
   const [offices, setOffices] = useState([]);
+  const [loadingOffices, setLoadingOffices] = useState(true);
+  const [officesError, setOfficesError] = useState("");
   const [showQRScanner, setShowQRScanner] = useState(false);
 
   useEffect(() => {
@@ -70,11 +72,19 @@ const Search = () => {
   useEffect(() => {
     const fetchOffices = async () => {
       try {
+        setLoadingOffices(true);
+        setOfficesError("");
         const response = await fetch(`${API_BASE}/queue/organizations`);
+        if (!response.ok) {
+          throw new Error(`Unable to load organizations (${response.status})`);
+        }
         const data = await response.json();
         setOffices(Array.isArray(data) ? data : []);
-      } catch {
+      } catch (error) {
         setOffices([]);
+        setOfficesError(error.message || "Unable to load organizations.");
+      } finally {
+        setLoadingOffices(false);
       }
     };
 
@@ -190,6 +200,16 @@ const Search = () => {
         </div>
 
         <motion.div layout className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-20">
+          {loadingOffices && (
+            <p className="col-span-full py-10 text-center font-black text-emerald-700">
+              Loading organizations… Render may take a few seconds to wake up.
+            </p>
+          )}
+          {!loadingOffices && officesError && (
+            <p className="col-span-full py-10 text-center font-bold text-red-600">
+              {officesError} Please refresh and try again.
+            </p>
+          )}
           <AnimatePresence mode="popLayout">
             {processedOffices.map((office) => (
               <motion.div
