@@ -3,6 +3,8 @@ import axios from "axios";
 import ElectricBorder from "../components/ElectricBorder";
 import GlitchText from "../components/GlitchText";
 
+const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY || "";
+
 export default function ActivityRoom() {
   const mockNewsData = [
     { title: "Major drug bust in city center; 3 arrested", description: "Police seized 50kg of narcotics in a raid conducted late last night.", link: "#", source_id: "local_news" },
@@ -20,7 +22,7 @@ export default function ActivityRoom() {
     const fetchNews = async () => {
       try {
         const response = await axios.get("https://newsdata.io/api/1/news", {
-          params: { apikey: "pub_e3c662ea415f4da9b9c76a5f7e1d4ec7", q: "news", country: "in", language: selectedLanguage }
+          params: { apikey: NEWS_API_KEY, q: "news", country: "in", language: selectedLanguage }
         });
         setNewsData(response.data.results || mockNewsData);
       } catch (error) {
